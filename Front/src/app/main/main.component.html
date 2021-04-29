@@ -1,0 +1,22 @@
+<nb-card accent="primary" class="cardM">
+    <nb-card-header class="center">
+        <button nbButton hero status="primary" (click)="token()">Generar Token</button>
+    </nb-card-header>
+    <nb-card-body class="center">
+        <label for="api">Seleccione la API</label> <br>
+        <nb-select id="api" placeholder="API" status="primary" [(selected)]="api">
+            <nb-option value="1">API gratuita</nb-option>
+            <nb-option value="2">API test token</nb-option>
+            <nb-option value="3">API Mongo</nb-option>
+        </nb-select>
+        <br>
+        <button nbButton hero status="primary" class="buttonNeb" (click)="consultar()">Consultar</button>
+    </nb-card-body>
+</nb-card>
+
+
+<nb-card *ngIf="bolCod" accent="danger" class="cardM">
+    <nb-card-header>
+        <label>El resultado es: {{result}}</label>
+    </nb-card-header>
+</nb-card>
