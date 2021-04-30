@@ -38,10 +38,8 @@ export class RequestService {
   getData(url) {
     
     if (this.token) {
-      // return this.http.get(this.urlApi + '/' + url, { headers: this.headersAut }).pipe(res => res);
       return this.http.get(this.urlApi + '/' + url, { headers: this.headersAut });
     } else {
-      // return this.http.get(this.urlApi + '/' + url, { headers: this.headers }).pipe(res => res);
       return this.http.get(this.urlApi + '/' + url, { headers: this.headers });
     }
   }

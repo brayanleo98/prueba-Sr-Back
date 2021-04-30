@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 exports.find = async (req, res) => {
     schema.find((err, emp) => {
         if (err || !res) {
+            console.log(err);
             return res.send({ statusCode: 500, message: 'Error al buscar empleados' });
         }
         return res.send({
@@ -33,10 +34,8 @@ exports.autenticate = async (req, res) => {
         check: true
     };
     const token = jwt.sign(payload, process.env.TOKEN_SECRET, {
-        expiresIn: '2h'
+        expiresIn: '1h'
     });
-
-    // console.log(token);
     res.json({
         message: 'Autenticación correcta',
         token: token
@@ -48,5 +47,4 @@ exports.test = async (req, res) => {
         message: 'Validacion Token',
         result: 'Correcto'
     })
-
 }
