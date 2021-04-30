@@ -36,7 +36,6 @@ export class RequestService {
   }
 
   getData(url) {
-    
     if (this.token) {
       return this.http.get(this.urlApi + '/' + url, { headers: this.headersAut });
     } else {

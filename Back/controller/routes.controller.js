@@ -16,7 +16,7 @@ exports.find = async (req, res) => {
 }
 
 exports.poke = async (req, res) => {
-    let pokemon = await axios.get('https://pokeapi.co/api/v2/pokemon/ditto')
+    let pokemon = await axios.get('https://thesimpsonsquoteapi.glitch.me/quotes?count=5')
         .then(respuesta => {
             // console.log(respuesta);
             res.status(200).json({
@@ -34,7 +34,7 @@ exports.autenticate = async (req, res) => {
         check: true
     };
     const token = jwt.sign(payload, process.env.TOKEN_SECRET, {
-        expiresIn: '1h'
+        expiresIn: '1m'
     });
     res.json({
         message: 'Autenticación correcta',
@@ -45,6 +45,12 @@ exports.autenticate = async (req, res) => {
 exports.test = async (req, res) => {
     res.json({
         message: 'Validacion Token',
-        result: 'Correcto'
+        empleados: [
+            { Employedname: 'Cesar Bustos', Employedid: 1 },
+            { Employedname: 'Gustavo Murcia', Employedid: 2 },
+            { Employedname: 'Juan Peña', Employedid: 3 },
+            { Employedname: 'Monica Villa', Employedid: 4 },
+            { Employedname: 'Jorge Poveda', Employedid: 5 },
+        ]
     })
 }

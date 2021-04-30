@@ -14,9 +14,13 @@
     </nb-card-body>
 </nb-card>
 
-
-<nb-card *ngIf="bolCod" accent="danger" class="cardM">
-    <nb-card-header>
-        <label>El resultado es: {{result}}</label>
-    </nb-card-header>
+<nb-card *ngIf="bolSim" accent="danger" class="cardM">
+    <nb-card-body>
+        <nb-list>
+            <nb-list-item *ngFor="let sim of simArray">
+                <nb-user [name]="sim.name" [title]="sim.title" [picture]="sim.picture">
+                </nb-user>
+            </nb-list-item>
+        </nb-list>
+    </nb-card-body>
 </nb-card>
