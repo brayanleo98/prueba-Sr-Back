@@ -1,23 +1,57 @@
 .card {
     width: 30%;
     text-align: center;
-    margin-top: 15%;
+    margin-top: 10%;
 }
 
 .Form {
     padding: 3rem;
     border-radius: 4px;
     box-sizing: border-box;
- }
- .login {
-    height: 100%;
-    display: flex;
-    width: 100%;
-    margin: 0;
 }
 
-@media only screen and  (max-width: 809px) {
+.logoLogin {
+    font-size: 60px;
+    color: #333;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 809px) {
     .card {
         width: revert;
     }
+}
+
+@media only screen and (min-width: 790px) {
+    .imgBack {
+        margin-top: 0% !important;
+        margin-left: 0% !important;
+    }
+}
+
+.imgBack {
+    background-image: url(../../assets/background.jpg);
+    height: 101%;
+    width: 101%;
+    position: fixed;
+    margin-top: -1%;
+    margin-left: -1%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
