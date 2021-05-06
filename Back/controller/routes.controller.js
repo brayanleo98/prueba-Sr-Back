@@ -41,16 +41,3 @@ exports.autenticate = async (req, res) => {
         token: token
     });
 }
-
-exports.test = async (req, res) => {
-    res.json({
-        message: 'Validacion Token',
-        empleados: [
-            { Employedname: 'Cesar Bustos', Employedid: 1 },
-            { Employedname: 'Gustavo Murcia', Employedid: 2 },
-            { Employedname: 'Juan Peña', Employedid: 3 },
-            { Employedname: 'Monica Villa', Employedid: 4 },
-            { Employedname: 'Jorge Poveda', Employedid: 5 },
-        ]
-    })
-}
