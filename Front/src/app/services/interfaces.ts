@@ -1,10 +1,10 @@
 export interface User {
-    Name: number;
+    Name: string;
     User: string;
     Tel: string;
     Email: string;
     City: string;
-    Position: number;
-    Rol: number;
+    Position: string;
+    Rol: string;
     Token: string;
 }

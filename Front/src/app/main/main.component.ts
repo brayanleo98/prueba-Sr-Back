@@ -36,7 +36,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.comunication.dataUser$.subscribe(res => {
-      console.log(res);
       this.editData = res;
     })
 

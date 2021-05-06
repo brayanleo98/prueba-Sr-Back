@@ -30,3 +30,19 @@
 .progress {
     height: 5px;
 }
+
+@media only screen and  (min-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 auto;
+        width: 41.66667%;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    
+    .col-md-2 {
+        flex: 0 0 auto;
+        width: 41.66667%;
+        margin-right: 20%;
+    }
+}

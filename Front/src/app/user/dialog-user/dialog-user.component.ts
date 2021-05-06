@@ -15,23 +15,23 @@ export class DialogUserComponent implements OnInit {
   public userData = [
     {
       day: 1,
-      sche: '08:00 - 18:00',
+      sche: '',
     },
     {
       day: 2,
-      sche: '08:00 - 18:00',
+      sche: '',
     },
     {
       day: 3,
-      sche: '08:00 - 18:00',
+      sche: '',
     },
     {
       day: 4,
-      sche: '08:00 - 18:00',
+      sche: '',
     },
     {
       day: 5,
-      sche: '08:00 - 18:00',
+      sche: '',
     },
   ]
 
@@ -42,7 +42,6 @@ export class DialogUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.data);
     const aux = this.data.in.split(':');
     const auxOut = this.data.out.split(':');
     let hourIn = new Date()
@@ -70,7 +69,6 @@ export class DialogUserComponent implements OnInit {
 
     // values.in = values.in.getTime() + ':' + values.in.getMinutes()
     
-    console.log(values);
     this.userData[0].sche = ini + '-' + end ;
     this.userData[1].sche = ini + '-' + end ;
     this.userData[2].sche = ini + '-' + end ;

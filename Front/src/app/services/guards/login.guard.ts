@@ -8,16 +8,21 @@ import { LoginService } from '../login.service';
 })
 export class LoginGuard implements CanActivate {
 
-  constructor(private login: LoginService, private router: Router ) {}
+  constructor(private login: LoginService, private router: Router) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.login.getUser()) {
+    if (this.login.getUser()) {
+      
+      if (this.login.getUser().Rol === 'admin') {
         this.router.navigate(['/main']);
-        return false;
-      } else {
-        return true;
-      }
+      } else if (this.login.getUser().Rol === 'user') {
+        this.router.navigate(['/user']);
+      } 
+      return false;
+    } else {
+      return true;
+    }
   }
 
 }

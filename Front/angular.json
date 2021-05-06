@@ -25,7 +25,7 @@
             ],
             "styles": [
               "src/styles.css",
-              "node_modules/@nebular/theme/styles/prebuilt/default.css",
+              "node_modules/@nebular/theme/styles/prebuilt/dark.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
               
             ],
@@ -91,7 +91,7 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/@nebular/theme/styles/prebuilt/default.css"
+              "node_modules/@nebular/theme/styles/prebuilt/dark.css"
             ],
             "scripts": []
           }
