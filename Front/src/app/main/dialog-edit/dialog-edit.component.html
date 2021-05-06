@@ -1,0 +1,37 @@
+<nb-card class="card ml-auto mr-auto" accent="info  ">
+
+    <nb-card-body>
+
+        <div class="form-group">
+            <p class="textForm">Edit information</p>
+        </div>
+
+        <div class="form-group">
+            <label for="address" class="label">Address</label>
+            <input type="text" nbInput style="width: 100%; max-width: 100%;"
+                class="input-full-width size-large shape-semi-round ng-pristine" id="address" placeholder="Address"
+                autofocus fullWidth [(ngModel)]="userData.address" />
+        </div>
+
+        <div class="form-group">
+            <label for="dependents" class="label">Dependents</label>
+            <input type="text" nbInput style="width: 100%; max-width: 100%;"
+                class="input-full-width size-large shape-semi-round ng-pristine" id="dependents"
+                placeholder="Dependents" autofocus fullWidth [(ngModel)]="userData.dependents" />
+        </div>
+
+        <div class="form-group">
+            <label for="area" class="label">Area</label>
+            <input type="text" nbInput style="width: 100%; max-width: 100%;"
+                class="input-full-width size-large shape-semi-round ng-pristine" id="area" placeholder="Area" autofocus
+                fullWidth [(ngModel)]="userData.area" />
+        </div>
+        <div>
+            <button class="buttonSubmit" nbButton nbSpinnerStatus="primary" fullWidth status="primary" (click)="save()">
+                Edit
+            </button>
+        </div>
+
+    </nb-card-body>
+
+</nb-card>

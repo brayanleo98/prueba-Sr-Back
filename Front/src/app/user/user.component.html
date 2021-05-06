@@ -1,0 +1,67 @@
+<div class="row">
+    <nb-card class="cardM col-4">
+
+        <nb-card-header class="center">
+
+            <button nbButton ghost class="btnSoci" (click)="logOut()">
+                <nb-icon icon="log-out"></nb-icon>
+                Log Out
+            </button>
+            <img src="../../assets/perfil-nic.jpg" alt="Logo" class="imgUser">
+            <h6>{{user.Name}}</h6>
+            <p class="txtColor">{{user.Position}}</p>
+        </nb-card-header>
+        <nb-card-body>
+            <small class="txtColor">Email address</small>
+            <p>{{user.Email}}</p>
+            <small class="txtColor">Phone</small>
+            <p>{{user.Tel}}</p>
+            <small class="txtColor">City</small>
+            <p>{{user.City}}</p>
+            <button nbButton class="btnSoci mr-2">
+                <nb-icon icon="facebook"></nb-icon>
+            </button>
+            <button nbButton class="btnSoci mr-2">
+                <nb-icon icon="twitter"></nb-icon>
+            </button>
+            <button nbButton class="btnSoci mr-0">
+                <nb-icon icon="github"></nb-icon>
+            </button>
+        </nb-card-body>
+    </nb-card>
+
+    <nb-card class="cardM col-7">
+        <nb-card-header class="row">
+            <h5 class="font-weight-medium mt-4 col-12">Workdays</h5>
+            <div class="col-md col-xs-6" *ngFor="let value of editData">
+                <strong>{{value.day | language}}</strong> <br>
+                <p class="txtColor">{{value.sche}}</p>
+            </div>
+        </nb-card-header>
+        <nb-card-body [ngSwitch]="bolSim">
+            <div class="mb-3 center">
+                <button nbButton hero status="primary" class="mr-3" (click)="edit()">Edit schedule</button>
+                <button nbButton hero status="primary" (click)="changeLanguage()">Change language </button>
+            </div>
+
+            <app-dialog-user *ngSwitchCase="true" [data]="sche" (dataResponse)="getRespond($event)">
+            </app-dialog-user>
+            <div *ngIf="bolLan" class="row">
+                <h5 class="font-weight-medium mt-4 col-12">Spanish</h5>
+                <div class="col-md col-xs-6" *ngFor="let value of editData">
+                    <strong>{{value.day | language : 'spanish'}}</strong> <br>
+                    <p class="txtColor">{{value.sche}}</p>
+                </div>
+
+                <h5 class="font-weight-medium mt-4 col-12">Italian</h5>
+                <div class="col-md col-xs-6" *ngFor="let value of editData">
+                    <strong>{{value.day | language : 'italian'}}</strong> <br>
+                    <p class="txtColor">{{value.sche}}</p>
+                </div>
+            </div>
+
+        </nb-card-body>
+    </nb-card>
+
+
+</div>

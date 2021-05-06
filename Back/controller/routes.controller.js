@@ -3,10 +3,10 @@ const axios = require('axios')
 const jwt = require('jsonwebtoken');
 
 exports.find = async (req, res) => {
-    schema.find((err, emp) => {
+    schema.find({ Employeduser: req.body.user, Employedpass: req.body.password }, (err, emp) => {
         if (err || !res) {
             console.log(err);
-            return res.send({ statusCode: 500, message: 'Error al buscar empleados' });
+            return res.send({ statusCode: 500, message: 'Error al buscar empleado' });
         }
         return res.send({
             message: 'success',

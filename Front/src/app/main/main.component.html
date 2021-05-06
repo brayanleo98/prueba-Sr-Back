@@ -1,26 +1,88 @@
-<nb-card accent="primary" class="cardM">
-    <nb-card-header class="center">
-        <button nbButton hero status="primary" (click)="token()">Generar Token</button>
-    </nb-card-header>
-    <nb-card-body class="center">
-        <label for="api">Seleccione la API</label> <br>
-        <nb-select id="api" placeholder="API" status="primary" [(selected)]="api">
-            <nb-option value="1">API gratuita</nb-option>
-            <nb-option value="2">API test token</nb-option>
-            <nb-option value="3">API Mongo</nb-option>
-        </nb-select>
-        <br>
-        <button nbButton hero status="primary" class="buttonNeb" (click)="consultar()">Consultar</button>
-    </nb-card-body>
-</nb-card>
+<div class="row">
+    <nb-card class="cardM col-4">
 
-<nb-card *ngIf="bolSim" accent="danger" class="cardM">
-    <nb-card-body>
-        <nb-list>
-            <nb-list-item *ngFor="let sim of simArray">
-                <nb-user [name]="sim.name" [title]="sim.title" [picture]="sim.picture">
-                </nb-user>
-            </nb-list-item>
-        </nb-list>
-    </nb-card-body>
-</nb-card>
+        <nb-card-header class="center">
+            <button nbButton ghost class="btnSoci" (click)="logOut()">
+                <nb-icon icon="log-out" ></nb-icon>
+                Log Out
+            </button>
+            <img src="../../assets/perfil-sof.jpg" alt="Logo" class="imgUser">
+            <h6>{{user.Name}}</h6>
+            <p class="txtColor">{{user.Position}}</p>
+        </nb-card-header>
+        <nb-card-body>
+            <small class="txtColor">Email address</small>
+            <p>{{user.Email}}</p>
+            <small class="txtColor">Phone</small>
+            <p>{{user.Tel}}</p>
+            <small class="txtColor">City</small>
+            <p>{{user.City}}</p>
+            <button nbButton class="btnSoci mr-2">
+                <nb-icon icon="facebook"></nb-icon>
+            </button>
+            <button nbButton class="btnSoci mr-2">
+                <nb-icon icon="twitter"></nb-icon>
+            </button>
+            <button nbButton class="btnSoci mr-0" >
+                <nb-icon icon="github"></nb-icon>
+            </button>
+        </nb-card-body>
+    </nb-card>
+
+    <nb-card class="cardM col-7">
+        <nb-card-header class="row">
+            <div class="col-md-3 col-xs-6">
+                <strong>User Name</strong> <br>
+                <p class="txtColor">{{user.User}}</p>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <strong>Address</strong> <br>
+                <p class="txtColor">{{editData.address}}</p>
+            </div>
+            <div class="col-md-2 col-xs-5">
+                <strong>Dependents</strong> <br>
+                <p class="txtColor">{{editData.dependents}}</p>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <strong>Area</strong> <br>
+                <p class="txtColor">{{editData.area}}</p>
+            </div>
+            <div class="col-md-1 col-xs-1">
+                <button nbButton ghost class="btnSoci">
+                    <nb-icon icon="edit-2" (click)="openDialog()"></nb-icon>
+                </button>
+            </div>
+        </nb-card-header>
+        <nb-card-body>
+            <div class="mb-3 center">
+                <button nbButton hero status="primary" (click)="getSim()">Get API</button>
+            </div>
+
+            <nb-list *ngIf="bolSim">
+                <nb-list-item *ngFor="let sim of simArray">
+                    <nb-user [name]="sim.name" [title]="sim.title" [picture]="sim.picture">
+                    </nb-user>
+                </nb-list-item>
+            </nb-list>
+            <h5 class="font-weight-medium mt-4">Skill Set</h5>
+            <hr style="background-color: black;">
+            <h6 class="mt-4">Angular <span class="pull-right">70%</span></h6>
+            <nb-progress-bar class="progress" [value]="70" status="success"></nb-progress-bar>
+
+            <h6 class="mt-4">Node Js <span class="pull-right">90%</span></h6>
+
+            <nb-progress-bar class="progress" [value]="90" status="info"></nb-progress-bar>
+
+            <h6 class="mt-4">SQL <span class="pull-right">50%</span></h6>
+
+            <nb-progress-bar class="progress" [value]="50" status="danger"></nb-progress-bar>
+
+            <h6 class="mt-4">Scrum <span class="pull-right">80%</span></h6>
+
+            <nb-progress-bar class="progress" [value]="80" status="warning"></nb-progress-bar>
+
+        </nb-card-body>
+    </nb-card>
+
+
+</div>

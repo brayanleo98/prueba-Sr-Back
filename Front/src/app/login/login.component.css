@@ -1,0 +1,11 @@
+.card {
+    width: 50%;
+    text-align: center;
+    margin-top: 20%;
+}
+
+.Form {
+    padding: 3rem;
+    border-radius: 4px;
+    box-sizing: border-box;
+ }

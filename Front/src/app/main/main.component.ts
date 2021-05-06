@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { NbToastRef, NbToastrModule, NbToastrService } from '@nebular/theme';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NbDialogService, NbToastRef, NbToastrModule, NbToastrService } from '@nebular/theme';
+import { ComunicationService } from '../services/comunication.service';
+import { User } from '../services/interfaces';
+import { LoginService } from '../services/login.service';
 import { RequestService } from '../services/request.service';
+import { DialogEditComponent } from './dialog-edit/dialog-edit.component';
 
 @Component({
   selector: 'app-main',
@@ -13,45 +18,33 @@ export class MainComponent implements OnInit {
   public api: string;
   public result: string;
   public simArray = [];
+  public user: User;
+  public editData = {
+    address: 'Fake street 123',
+    dependents: '5',
+    area: 'Administrative'
+  }
+
   constructor(private request: RequestService,
-    private toastr: NbToastrService,) {
+    private toastr: NbToastrService,
+    private loginService: LoginService,
+    private router: Router,
+    private comunication: ComunicationService,
+    private dialogService: NbDialogService) {
+    this.user = loginService.getUser();
   }
 
   ngOnInit(): void {
+    this.comunication.dataUser$.subscribe(res => {
+      console.log(res);
+      this.editData = res;
+    })
+
   }
 
-  token() {
-    this.request.getAuthenticate().subscribe((res: any) => {
-      this.toastr.success('Token generado', 'Éxito');
-      this.request.setToken(res.token);
-    }, (err: any) => {
-      console.log(err);
-      // const toastRef: NbToastRef = this.toastr.show('Error en la autenticacion','Error')
-      this.toastr.warning('Error en la autenticacion', 'Wrong');
-    });
-  }
-
-  consultar() {
-    this.bolSim = false;
-
-    switch (this.api) {
-      case '1':
-        this.getSim('getApiPoke');
-        break;
-      case '2':
-        this.getRequest('test');
-        break;
-      case '3':
-        this.getRequest('getMongoData');
-        break;
-      default:
-        break;
-    }
-  }
-
-  getSim(url) {
-    this.simArray = []
-    this.request.getData(url).subscribe((res: any) => {
+  getSim() {
+    this.simArray = [];
+    this.request.getData('getApiPoke', {}).subscribe((res: any) => {
       res.data.forEach(element => {
         this.simArray.push({ name: element.character, title: element.quote, picture: element.image })
       });
@@ -60,20 +53,22 @@ export class MainComponent implements OnInit {
       console.log(err);
       this.bolSim = false;
       err.status === 403 ? this.toastr.warning('Token vencido ', 'Error') : err.status === 401 ? this.toastr.warning('No autorizado ', 'Error') : null;
+      this.loginService.logout();
+      this.router.navigate(['/user']);
     });
   }
 
-  getRequest(url) {
-    this.simArray = []
-    this.request.getData(url).subscribe((res: any) => {
-      res.empleados.forEach(element => {
-        this.simArray.push({ name: element.Employedname, title: element.Employedid, picture: '' })
-      });
-      this.bolSim = true;
-    }, (err: any) => {
-      console.log(err);
-      this.bolSim = false;
-      err.status === 403 ? this.toastr.warning('Token vencido ', 'Error') : err.status === 401 ? this.toastr.warning('No autorizado ', 'Error') : null;
-    });
+  logOut() {
+    this.loginService.logout();
+    this.router.navigate(['/login']);
+  }
+
+  openDialog() {
+    this.dialogService.open(DialogEditComponent, {
+      context: {
+        userData: this.editData
+      },
+      closeOnBackdropClick: false
+    })
   }
 }

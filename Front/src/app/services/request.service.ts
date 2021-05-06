@@ -35,11 +35,11 @@ export class RequestService {
     });
   }
 
-  getData(url) {
+  getData(url, body) {
     if (this.token) {
-      return this.http.get(this.urlApi + '/' + url, { headers: this.headersAut });
+      return this.http.post(this.urlApi + '/' + url, body, { headers: this.headersAut });
     } else {
-      return this.http.get(this.urlApi + '/' + url, { headers: this.headers });
+      return this.http.post(this.urlApi + '/' + url, body, { headers: this.headers });
     }
   }
 

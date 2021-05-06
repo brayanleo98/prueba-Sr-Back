@@ -1,0 +1,29 @@
+<nb-card class="card ml-auto mr-auto" accent="info  ">
+
+    <nb-card-body>
+
+        <form aria-labelledby="title" [formGroup]="form" (ngSubmit)="save()" class="Form align-middle">
+            <div class="form-group">
+                <p class="textForm">Edit schedule</p>
+            </div>
+
+            <div class="form-group">
+                <label for="in" class="label">Get in</label>
+                <input id="in" nbInput type="text" formControlName="in" [nbTimepicker]="timepicker" />
+                <nb-timepicker #timepicker></nb-timepicker>
+            </div>
+
+            <div class="form-group">
+                <label for="out" class="label">Leave</label>
+                <input id="out" nbInput type="text" formControlName="out" [nbTimepicker]="timepicker2" />
+                <nb-timepicker #timepicker2></nb-timepicker>
+            </div>
+            <button class="buttonSubmit" nbButton  nbSpinnerStatus="primary" fullWidth
+                status="primary" type="submit">
+                Save
+            </button>
+        </form>
+
+    </nb-card-body>
+
+</nb-card>
